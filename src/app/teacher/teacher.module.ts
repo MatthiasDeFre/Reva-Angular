@@ -7,9 +7,11 @@ import { QuestionFilterPipe } from "./question-filter.pipe";
 import { QuestionListComponent } from "./question-list/question-list.component";
 import { TeacherDataService } from "./teacher-data.service";
 import { RouterModule } from "@angular/router";
+import { Routes } from "@angular/router";
+import { GroupComponent } from './group/group.component';
 //import { httpInterceptorProviders, basehttpInterceptorProviders } from "../http-interceptors";
 
-const routes = [
+const routes: Routes= [
   { path: 'list', component: QuestionListComponent }
 ];
 @NgModule({
@@ -23,11 +25,12 @@ const routes = [
     QuestionComponent,
     QuestionFilterPipe,
     QuestionListComponent,
+    GroupComponent,
   ],
   providers: [
     //basehttpInterceptorProviders,
     //httpInterceptorProviders,
     TeacherDataService,
-  ]
+  ] 
 })
 export class TeacherModule { }

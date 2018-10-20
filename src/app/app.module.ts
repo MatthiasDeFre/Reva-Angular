@@ -7,19 +7,23 @@ import { QuestionListComponent } from './teacher/question-list/question-list.com
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HttpClient } from 'selenium-webdriver/http';
 import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing/app-routing.module';
+import { TeacherModule } from './teacher/teacher.module';
+import { basehttpInterceptorProviders } from './interceptors';
 
 @NgModule({
   declarations: [
     AppComponent,
-    QuestionComponent,
-    QuestionListComponent,
     PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    TeacherModule,
+    AppRoutingModule
+ 
   ],
-  providers: [],
+  providers: [basehttpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

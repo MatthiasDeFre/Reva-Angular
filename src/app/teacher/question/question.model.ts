@@ -13,7 +13,7 @@ export class Question {
     static fromJSON(json: any): Question {
         const question = new Question(
             json.body,
-            json.answers,
+            json.possibleAnswers,
             json.posted
         );
         question._id = json._id;
@@ -23,6 +23,7 @@ export class Question {
     get id(): string {
         return this._id;
     }
+
     get body(): string {
         return this._body;
     }

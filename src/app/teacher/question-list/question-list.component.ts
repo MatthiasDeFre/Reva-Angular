@@ -29,7 +29,7 @@ export class QuestionListComponent implements OnInit {
 
   ngOnInit(): void {
     this._teacherDataService.questions.subscribe(
-      questions => (this._questions = questions),
+      questions => {this._questions = questions;console.log(questions)},
       (error: HttpErrorResponse) => {
         this.errorMsg = `Error ${
           error.status
@@ -39,6 +39,7 @@ export class QuestionListComponent implements OnInit {
   }
 
   get questions() {
+    console.log("get")
     return this._questions;
   }
 

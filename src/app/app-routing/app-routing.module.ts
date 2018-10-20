@@ -6,13 +6,13 @@ import { SelectivePreloadStrategy } from './SelectivePreloadStrategy';
 //import { AuthGuardService } from '../user/auth-guard.service';
 
 const appRoutes: Routes = [
-  {
+ /* {
     path: 'teacher',
     canActivate: [],
     loadChildren: 'app/teacher/teacher.module#TeacherModule',
     data: { preload: true }
-  },
-  { path: '', redirectTo: 'teacher/list', pathMatch: 'full' },
+  },*/
+  { path: '', redirectTo: 'list', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
 

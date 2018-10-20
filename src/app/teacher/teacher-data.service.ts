@@ -11,7 +11,7 @@ import { map } from 'rxjs/operators';
 export class TeacherDataService {
 
   //attributen
-  private readonly _appUrl = '/API';
+  private readonly _appUrl = '/API/teachers';
 
   //ctors
   constructor(private http: HttpClient) {}
