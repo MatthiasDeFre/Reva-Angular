@@ -9,15 +9,19 @@ import { TeacherDataService } from "./teacher-data.service";
 import { RouterModule } from "@angular/router";
 import { Routes } from "@angular/router";
 import { GroupComponent } from './group/group.component';
+import { GroupListComponent } from './group-list/group-list.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 //import { httpInterceptorProviders, basehttpInterceptorProviders } from "../http-interceptors";
 
 const routes: Routes= [
-  { path: 'list', component: QuestionListComponent }
+  { path: 'list', component: QuestionListComponent },
+  { path: "groups", component: GroupListComponent}
 ];
 @NgModule({
   imports: [
     HttpClientModule,
     CommonModule,
+    FontAwesomeModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
@@ -26,6 +30,7 @@ const routes: Routes= [
     QuestionFilterPipe,
     QuestionListComponent,
     GroupComponent,
+    GroupListComponent,
   ],
   providers: [
     //basehttpInterceptorProviders,

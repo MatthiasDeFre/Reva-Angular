@@ -1,0 +1,12 @@
+<div>Groepen en hun codes</div>
+<div *ngIf="!(groups == undefined);else nogroups">
+<div>
+  <button>Maak groepen aan</button>
+  <button (click)="deleteGroups()">Verwijder alle groepen</button>
+  <button (click)="copyToClipboard()">Kopieer codes naar klembord</button>
+</div>
+
+<app-group *ngFor='let localGroup of groups ' [group]='localGroup'></app-group>
+</div>
+
+<ng-template #nogroups><p>Nog geen groepen aangemaakt: klik op aanmaken groepen om deze aan te maken!</p></ng-template>
