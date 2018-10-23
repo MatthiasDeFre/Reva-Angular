@@ -22,7 +22,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     TeacherModule,
     AppRoutingModule,
     FontAwesomeModule
- 
+
   ],
   providers: [basehttpInterceptorProviders],
   bootstrap: [AppComponent]
