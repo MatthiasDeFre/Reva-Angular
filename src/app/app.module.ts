@@ -10,7 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { TeacherModule } from './teacher/teacher.module';
 import { basehttpInterceptorProviders } from './interceptors';
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +20,8 @@ import { basehttpInterceptorProviders } from './interceptors';
     BrowserModule,
     HttpClientModule,
     TeacherModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FontAwesomeModule
  
   ],
   providers: [basehttpInterceptorProviders],
