@@ -11,11 +11,14 @@ import { distinctUntilChanged, debounceTime, map } from 'rxjs/operators';
   styleUrls: ['./question-list.component.css']
 })
 export class QuestionListComponent implements OnInit {
+  
+  
   //attributes
   public filterQuestionName: string;
   public filterQuestion$ = new Subject<string>();
   public errorMsg: string;
   private _questions: Question[];
+
 
   constructor(private _teacherDataService: TeacherDataService) {
     this.filterQuestion$
@@ -42,5 +45,8 @@ export class QuestionListComponent implements OnInit {
     console.log("get")
     return this._questions;
   }
+
+
+  
 
 }

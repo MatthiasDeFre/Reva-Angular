@@ -1,0 +1,15 @@
+<div><h1>Groepen en hun codes</h1></div>
+<div *ngIf="!(groups == undefined);else nogroups">
+<div class="glbuttons">
+  <div class="glc">
+  <input type="number" class="form-control" [(ngModel)]="amount"/>
+  <button class="btn btn-success sendbtn" (click)="createGroups()">Maak groepen aan</button>
+</div>
+  <div class="gld"><button (click)="deleteGroups()">Verwijder alle groepen</button></div>
+  <div class="glcopy"><button (click)="copyToClipboard()">Kopieer codes naar klembord</button></div>
+  <br class="clearer">
+</div>
+<app-group *ngFor='let localGroup of groups ' [group]='localGroup' (deleteGroupEvent)='removeGroup($event)'></app-group>
+</div>
+
+<ng-template #nogroups><p>Nog geen groepen aangemaakt: klik op aanmaken groepen om deze aan te maken!</p></ng-template>
