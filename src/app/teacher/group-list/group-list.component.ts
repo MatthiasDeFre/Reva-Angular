@@ -4,6 +4,7 @@ import { Group } from '../group/group.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { flatMap } from 'rxjs/operators';
+import { Input } from '@angular/core';
 
 @Component({
   selector: 'app-group-list',
@@ -12,6 +13,8 @@ import { flatMap } from 'rxjs/operators';
 })
 export class GroupListComponent implements OnInit {
 
+  @Input("amount")
+  private amount : number;
   private _groups : Group[];
   private errorMsg : string;
   constructor(private _teacherDataService : TeacherDataService, private router : Router) { }
@@ -29,6 +32,9 @@ export class GroupListComponent implements OnInit {
   get groups() {
     return this._groups;
   }
+  createGroups() {
+    this._teacherDataService.createGroups(this.amount).subscribe((item) => {this._groups=[...this._groups,...item]})
+  }
   deleteGroups() {
     this._teacherDataService.deleteGroups().subscribe(
       (item) => {
@@ -39,6 +45,19 @@ export class GroupListComponent implements OnInit {
      
     );
    }
+
+   removeGroup(group : Group) {
+     console.log("r")
+    this._teacherDataService.deleteGroup(group).subscribe(
+      item => (this._groups = this._groups.filter(val => group.id !== val.id)),
+      (error: HttpErrorResponse) => {
+        this.errorMsg = `Error ${error.status} while removing group for ${
+          group.name
+        }: ${error.error}`;
+      }
+    );
+   }
+
    copyToClipboard() {
     document.addEventListener('copy', (e: ClipboardEvent) => {
       let codes ="";

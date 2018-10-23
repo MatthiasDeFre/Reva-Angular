@@ -29,12 +29,15 @@ export class TeacherDataService {
     .get(`${this._appUrl}/codes/`)
     .pipe(map((list: any[]): Group[] => list.map(Group.fromJSON)));
   }
+  createGroups(amount) : Observable<Group[]> {
+    return this.http.post(`${this._appUrl}/makegroups/`, {amount:amount}).pipe(map((list: any[]): Group[] => list.map(Group.fromJSON)));
+  }
   deleteGroups() {
     
     return this.http
       .delete(`${this._appUrl}/removeGroups/`);
   }
-  deleteGroup(group) {
+  deleteGroup(group){
     return this.http
       .delete(`${this._appUrl}/removeGroup/${group.id}`);
   }
