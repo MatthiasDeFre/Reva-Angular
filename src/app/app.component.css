@@ -57,7 +57,7 @@ span {
 
 #sidebar {
     width:70px;
-    background: #7386D5;
+    background: orange;
     color: #fff;
     transition: all 0.3s;
 }
@@ -96,6 +96,7 @@ span {
 
 #sidebar.active .sidebar-header strong {
     display: block;
+    
 }
 
 #sidebar ul li a {
@@ -132,6 +133,7 @@ span {
 #sidebar .sidebar-header {
     padding: 20px;
     background: #6d7fcc;
+    
 }
 
 #sidebar .sidebar-header strong {
@@ -142,6 +144,9 @@ span {
 #sidebar ul.components {
     padding: 20px 0;
     border-bottom: 1px solid #47748b;
+}
+#sidebar ul.components:first{
+    margin-bottom:150px;
 }
 
 #sidebar ul li a {
@@ -162,7 +167,7 @@ span {
 
 #sidebar ul li.active{
     color: #fff;
-    background: #6d7fcc;
+    background: #2fa5bb;
 }
 
 a[data-toggle="collapse"] {
@@ -278,5 +283,13 @@ a.article:hover {
 a.navigatieItem{
     overflow-x: hidden;
     width: 50px;
+}
+
+.img{
+    border-radius:10px;
+}
+
+.logo{
+    margin-bottom:40px;
 }
 
