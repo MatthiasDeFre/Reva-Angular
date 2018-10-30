@@ -11,10 +11,14 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { TeacherModule } from './teacher/teacher.module';
 import { basehttpInterceptorProviders } from './interceptors';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AdminComponent } from './admin/admin.component';
+import { ExhibitorComponent } from './exhibitor/exhibitor.component';
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    AdminComponent,
+    ExhibitorComponent,
   ],
   imports: [
     BrowserModule,
