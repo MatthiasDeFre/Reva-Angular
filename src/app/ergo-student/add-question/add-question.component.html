@@ -1,0 +1,22 @@
+<div class="ui large form segment w40centered" id="loginForm">
+  <div *ngIf='errorMsg' class="ui error message">{{errorMsg}}</div>
+  <form class="ui form" [formGroup]='question' (ngSubmit)='onSubmit()'>
+    <h4 class="ui dividing header">Add Question</h4>
+    <div class="field">
+      <label for="name_id">Question:</label>
+      <input id="name" name="name_id" formControlName='name'>
+<!--       <div *ngIf='player.get("name").errors?.required && player.get("name").touched' class='ui pointing red basic label'>
+        a player must have a name of at least 2 characters long
+      </div> -->
+    </div>
+
+    <div class="field">
+      <label for="answer_name">Answers: </label>
+      <input type="text" id="ingredient_name" formControlName='ingredientname'>
+    </div>
+
+    <button type='submit' class="ui primary button">
+      Add question
+    </button>
+  </form>
+</div>
