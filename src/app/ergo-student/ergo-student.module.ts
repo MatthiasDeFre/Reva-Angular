@@ -9,10 +9,12 @@ import { ErgoStudentDataService } from "./ergo-student-data.service";
 import { QuestionComponent } from "./question/question.component";
 import { QuestionListComponent } from "./question-list/question-list.component";
 import { QuestionFilterPipe } from "./question-filter.pipe";
+import { AddQuestionComponent } from './add-question/add-question.component';
 //import { httpInterceptorProviders, basehttpInterceptorProviders } from "../http-interceptors";
 
 const routes: Routes= [
-  { path: 'list', component: QuestionListComponent }
+  { path: 'list', component: QuestionListComponent },
+  { path: 'add', component: AddQuestionComponent }
 ];
 @NgModule({
   imports: [
@@ -27,6 +29,7 @@ const routes: Routes= [
     QuestionComponent,
     QuestionFilterPipe,
     QuestionListComponent,
+    AddQuestionComponent,
   ],
   providers: [
     //basehttpInterceptorProviders,
