@@ -41,4 +41,7 @@ export class Question {
     get exhibitor() : [string, string] {
         return this._exhibitor;
     }
+    addAnswer(answer: string) {
+        this._answers.push(answer);
+      }
 }

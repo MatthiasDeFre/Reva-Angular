@@ -13,7 +13,7 @@ import { AddQuestionComponent } from './add-question/add-question.component';
 //import { httpInterceptorProviders, basehttpInterceptorProviders } from "../http-interceptors";
 
 const routes: Routes= [
-  { path: 'list', component: QuestionListComponent },
+  { path: 'ergolist', component: QuestionListComponent },
   { path: 'add', component: AddQuestionComponent }
 ];
 @NgModule({
@@ -37,4 +37,4 @@ const routes: Routes= [
     ErgoStudentDataService,
   ] 
 })
-export class TeacherModule { }
+export class ErgoStudentModule { }
