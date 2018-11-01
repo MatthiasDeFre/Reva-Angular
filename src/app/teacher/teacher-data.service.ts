@@ -24,6 +24,12 @@ export class TeacherDataService {
       .pipe(map((list: any[]): Question[] => list.map(Question.fromJSON)));
   }
 
+  get questionsAnswered(): Observable<Question[]> {
+    return this.http
+    .get(`${this._appUrl}/groupquestions/`)
+    .pipe(map((list: any[]): Question[] => list.map(Question.fromJSONGroup)));
+  }
+
   get groups() : Observable<Group[]> {
     return this.http
     .get(`${this._appUrl}/codes/`)

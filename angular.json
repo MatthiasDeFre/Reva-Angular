@@ -23,9 +23,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/test/style.bundle.css"
             ],
-            "scripts": []
+            "scripts": [ "src/assets/test/scripts.bundle.js"]
           },
           "configurations": {
             "production": {

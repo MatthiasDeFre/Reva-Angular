@@ -14,8 +14,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 //import { httpInterceptorProviders, basehttpInterceptorProviders } from "../http-interceptors";
 
 const routes: Routes= [
-  { path: 'list', component: QuestionListComponent },
-  { path: "groups", component: GroupListComponent}
+  { path: 'list', component: QuestionListComponent, data: {groupA : false} },
+  { path: "groups", component: GroupListComponent},
+  { path: 'groupanswered', component: QuestionListComponent, data: {groupA : true} },
 ];
 @NgModule({
   imports: [

@@ -23,6 +23,7 @@ export class GroupListComponent implements OnInit {
     this._teacherDataService.groups.subscribe(
       groups => {this._groups = groups;console.log(groups)},
       (error: HttpErrorResponse) => {
+        console.log(error)
         this.errorMsg = `Error ${
           error.status
           } while trying to retrieve groups: ${error.error}`;

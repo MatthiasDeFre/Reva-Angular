@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { TeacherDataService } from './teacher/teacher-data.service';
 import { distinctUntilChanged, debounceTime, map, filter } from 'rxjs/operators';
@@ -8,7 +8,14 @@ import { distinctUntilChanged, debounceTime, map, filter } from 'rxjs/operators'
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  ngOnInit(): void {
+    setInterval(() => {
+  
+     this.timeLeft = this.timeLeft-1;
+    },1000)
+  }
+  timeLeft = Math.abs(new Date("2018-02-07").getTime() - new Date().getTime());
   title = 'frontend';
   //attributen
   public filterQuestionName: string;

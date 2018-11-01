@@ -6,6 +6,7 @@ export class Question {
     private _answers: string[];
     private _posted: Date;
     private _exhibitor : [string, string];
+    private _groupAnswer : string;
 
     constructor(body: string, answers: string[], posted: Date, exhibitor : [string, string]) {
         this._body = body;
@@ -15,6 +16,7 @@ export class Question {
     }
 
     static fromJSON(json: any): Question {
+        console.log(json)
         const question = new Question(
             json.body,
             json.possibleAnswers,
@@ -22,6 +24,19 @@ export class Question {
             [json.exhibitor.category, json.exhibitor.name]
         );
         question._id = json._id;
+        return question;
+    }
+    static fromJSONGroup(json: any) : Question {
+        console.log(json)
+        const question = new Question(
+            json.body,
+            json.possibleAnswers,
+            json.posted,
+            [json.exhibitor.category, json.exhibitor.name]
+        );
+        question._id = json._id;
+        question._groupAnswer = json.answer.answer;
+        
         return question;
     }
 
@@ -40,5 +55,10 @@ export class Question {
     }
     get exhibitor() : [string, string] {
         return this._exhibitor;
+    }
+
+    get groupAnswer() : string {
+        console.log(this._groupAnswer)
+        return this._groupAnswer;
     }
 }

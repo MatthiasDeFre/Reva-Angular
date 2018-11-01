@@ -4,6 +4,7 @@ import { Question } from '../question/question.model';
 import { Subject } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { distinctUntilChanged, debounceTime, map } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-question-list',
@@ -20,7 +21,7 @@ export class QuestionListComponent implements OnInit {
   private _questions: Question[];
 
 
-  constructor(private _teacherDataService: TeacherDataService) {
+  constructor(private _teacherDataService: TeacherDataService, private route : ActivatedRoute) {
     this.filterQuestion$
       .pipe(
         distinctUntilChanged(),
@@ -31,6 +32,24 @@ export class QuestionListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.route.data.subscribe(v => {
+      let answered = v.groupA;
+      console.log(answered)
+      if(answered) {
+        this.subscribeWithAnswer()
+      } else {
+        this.subscribeWithoutAnswer();
+      }
+    })
+   
+  }
+
+  get questions() {
+    console.log("get")
+    return this._questions;
+  }
+
+  private subscribeWithoutAnswer() {
     this._teacherDataService.questions.subscribe(
       questions => {this._questions = questions;console.log(questions)},
       (error: HttpErrorResponse) => {
@@ -40,13 +59,16 @@ export class QuestionListComponent implements OnInit {
       }
     );
   }
-
-  get questions() {
-    console.log("get")
-    return this._questions;
+  private subscribeWithAnswer() {
+    this._teacherDataService.questionsAnswered.subscribe(
+      questions => {this._questions = questions;console.log(questions)},
+      (error: HttpErrorResponse) => {
+        this.errorMsg = `Error ${
+          error.status
+          } while trying to retrieve questions: ${error.error}`;
+      }
+    );
   }
-
-
   
 
 }
