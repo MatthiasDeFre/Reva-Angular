@@ -20,6 +20,7 @@ import { TasksComponent } from './content/widgets/general/tasks/tasks.component'
 import { SupportTicketsComponent } from './content/widgets/general/support-tickets/support-tickets.component';
 import { RecentActivitiesComponent } from './content/widgets/general/recent-activities/recent-activities.component';
 import { RecentNotificationsComponent } from './content/widgets/general/recent-notifications/recent-notifications.component';
+import { AuditLogComponent } from './content/widgets/general/audit-log/audit-log.component';
 import { BestSellerComponent } from './content/widgets/general/best-seller/best-seller.component';
 import { AuthorProfitComponent } from './content/widgets/general/author-profit/author-profit.component';
 import { DataTableComponent } from './content/widgets/general/data-table/data-table.component';
@@ -52,6 +53,7 @@ import { MatInputModule,
 		SupportTicketsComponent,
 		RecentActivitiesComponent,
 		RecentNotificationsComponent,
+		AuditLogComponent,
 		BestSellerComponent,
 		AuthorProfitComponent,
 		DataTableComponent,
@@ -70,6 +72,7 @@ import { MatInputModule,
 		SupportTicketsComponent,
 		RecentActivitiesComponent,
 		RecentNotificationsComponent,
+		AuditLogComponent,
 		BestSellerComponent,
 		AuthorProfitComponent,
 		DataTableComponent,

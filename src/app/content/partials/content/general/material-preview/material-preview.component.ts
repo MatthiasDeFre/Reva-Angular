@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, AfterViewChecked, ChangeDetectionStrategy } from '@angular/core';
+import { ExternalCodeExample } from '../../../../../core/models/external-code-example';
 import { NoticeComponent } from '../notice/notice.component';
 
 

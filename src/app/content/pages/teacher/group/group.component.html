@@ -1,0 +1,12 @@
+
+<div class="group col-lg-4">
+<p class="gcode">{{group.code}}</p>
+<div (click)="deleteGroup()"class="gdelete"><fa-icon [icon]="faTimes" style="color: #aa0b0b;"></fa-icon></div>
+<div style="text-align:center">
+  </div>
+<div class="gchosen">
+  <p *ngIf="group.name; else notchosen">Gekozen</p>
+</div>
+</div>
+
+<ng-template #notchosen><p>Nog niet gekozen</p></ng-template>
