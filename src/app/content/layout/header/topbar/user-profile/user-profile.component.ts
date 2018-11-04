@@ -33,6 +33,7 @@ export class UserProfileComponent implements OnInit {
 	}
 
 	public logout () {
-		this.authService.logout(true);
+		this.authService.logout();
+		this.router.navigate(['login']);
 	}
 }

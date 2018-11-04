@@ -9,10 +9,27 @@ import { TokenStorage } from './token-storage.service';
 import { UtilsService } from '../services/utils.service';
 import { AccessData } from './access-data';
 import { Credential } from './credential';
+import { User } from '../models/user';
+import { Router } from '@angular/router';
+
+function parseJwt(token) {
+	if (!token) {
+	  return null;
+	}
+	const base64Url = token.split('.')[1];
+	const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+	return JSON.parse(window.atob(base64));
+  }
 
 @Injectable()
 export class AuthenticationService implements AuthService {
-	API_URL = 'api';
+	  private readonly _tokenKey = 'currentUser';
+  private readonly _url = '/API/users';
+  private _user$: BehaviorSubject<User>;
+  private _username$ : BehaviorSubject<String>;
+  public redirectUrl: string;
+
+	API_URL = '/users';
 	API_ENDPOINT_LOGIN = '/login';
 	API_ENDPOINT_REFRESH = '/refresh';
 	API_ENDPOINT_REGISTER = '/register';
@@ -24,7 +41,24 @@ export class AuthenticationService implements AuthService {
 		private tokenStorage: TokenStorage,
 		private util: UtilsService
 	) {
+		console.log(localStorage.getItem(this._tokenKey))
 		this.onCredentialUpdated$ = new Subject();
+		let parsedToken = parseJwt(localStorage.getItem(this._tokenKey));
+		console.log(parsedToken)
+		if (parsedToken) {
+		  const expires =
+			new Date(parseInt(parsedToken.exp, 10) * 1000) < new Date();
+		  if (expires) {
+			localStorage.removeItem(this._tokenKey);
+			parsedToken = null;
+		  }
+		}
+		this._user$ = new BehaviorSubject<User>(
+			parsedToken && new User(parsedToken._id, parsedToken.name, parsedToken.email)
+		  );
+		this._username$ = new BehaviorSubject<String>(
+		  parsedToken && parsedToken.username
+		);
 	}
 
 	/**
@@ -34,6 +68,7 @@ export class AuthenticationService implements AuthService {
 	 * @memberOf AuthService
 	 */
 	public isAuthorized(): Observable<boolean> {
+		console.log("check")
 		return this.tokenStorage.getAccessToken().pipe(map(token => !!token));
 	}
 
@@ -102,16 +137,25 @@ export class AuthenticationService implements AuthService {
 	public login(credential: Credential): Observable<any> {
 		// Expecting response from API
 		// {"id":1,"username":"admin","password":"demo","email":"admin@demo.com","accessToken":"access-token-0.022563452858263444","refreshToken":"access-token-0.9348573301432961","roles":["ADMIN"],"pic":"./assets/app/media/img/users/user4.jpg","fullname":"Mark Andre"}
-		return this.http.get<AccessData>(this.API_URL + this.API_ENDPOINT_LOGIN + '?' + this.util.urlParam(credential)).pipe(
-			map((result: any) => {
-				if (result instanceof Array) {
-					return result.pop();
-				}
-				return result;
-			}),
-			tap(this.saveAccessData.bind(this)),
-			catchError(this.handleError('login', []))
-		);
+		let username= credential.email;
+		let password = credential.password;
+		console.log(credential);
+		return this.http.post(`${this._url}/login`, { username, password }).pipe(
+			map((res: any) => {
+			  const token = res.token;
+			  if (token) {
+				console.log(res);
+				console.log("token" + res.token);
+				localStorage.setItem(this._tokenKey, token);
+				this._user$.next(new User(res.user.id, res.user.name, res.user.email));
+				this._username$.next(username);
+				
+				return true;
+			  } else {
+				return false;
+			  }
+			})
+		  );
 	}
 
 	/**
@@ -133,12 +177,15 @@ export class AuthenticationService implements AuthService {
 	/**
 	 * Logout
 	 */
-	public logout(refresh?: boolean): void {
-		this.tokenStorage.clear();
-		if (refresh) {
-			location.reload(true);
+	public logout() {
+		if (this.user$.getValue()) {
+		  localStorage.removeItem(this._tokenKey);
+		  setTimeout(() => {
+			this._user$.next(null);
+			this._username$.next(null);
+		  });
 		}
-	}
+	  }
 
 	/**
 	 * Save access data in the storage
@@ -163,16 +210,24 @@ export class AuthenticationService implements AuthService {
 	 */
 	public register(credential: Credential): Observable<any> {
 		// dummy token creation
-		credential = Object.assign({}, credential, {
-			accessToken: 'access-token-' + Math.random(),
-			refreshToken: 'access-token-' + Math.random(),
-			roles: ['USER'],
-		});
-		return this.http.post(this.API_URL + this.API_ENDPOINT_REGISTER, credential)
-			.pipe(catchError(this.handleError('register', []))
-		);
+		let username = credential.email;
+		let password = credential.password;
+		console.log(credential)
+		return this.http.post(`${this._url}/register`, { username, password }).pipe(
+			map((res: any) => {
+			  const token = res.token;
+			  if (token) {
+				localStorage.setItem(this._tokenKey, token);
+				this._user$.next(new User(res.user.id, res.user.name, res.user.email));
+				this._username$.next(username);
+				return true;
+			  } else {
+				return false;
+			  }
+			})
+		  );
 	}
-
+	
 	/**
 	 * Submit forgot password request
 	 * @param {Credential} credential
@@ -183,5 +238,7 @@ export class AuthenticationService implements AuthService {
 			.pipe(catchError(this.handleError('forgot-password', []))
 		);
 	}
-
+	get user$() {
+		return this._user$;
+	}
 }

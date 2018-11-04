@@ -13,7 +13,7 @@
           </div>
           <div class="m-card-profile__details">
             <span class="m-card-profile__name">Mark Andre</span>
-            <a href="" class="m-card-profile__email m-link">mark.andre@gmail.com</a>
+            <a href="" class="m-card-profile__email m-link">{{currentUser | async}}</a>
           </div>
         </div>
         <ul class="m-nav m-nav--hover-bg m-portlet-fit--sides">
@@ -182,32 +182,26 @@
             </div>
             <div class="form-group m-form__group row">
               <div class="col-10 ml-auto">
-                <h3 class="m-form__section">1. Personal Details</h3>
+                <h3 class="m-form__section">1. Persoonlijke gegevens</h3>
               </div>
             </div>
             <div class="form-group m-form__group row">
-              <label for="example-text-input" class="col-2 col-form-label">Full Name</label>
+              <label for="example-text-input" class="col-2 col-form-label">Naam</label>
               <div class="col-7">
-                <input class="form-control m-input" type="text" value="Mark Andre">
+                <input name="name" class="form-control m-input" type="text" [(ngModel)]="name">
               </div>
             </div>
             <div class="form-group m-form__group row">
-              <label for="example-text-input" class="col-2 col-form-label">Occupation</label>
+              <label for="example-text-input" class="col-2 col-form-label">Email</label>
               <div class="col-7">
-                <input class="form-control m-input" type="text" value="CTO">
+                <input name="email" class="form-control m-input" type="text" [(ngModel)]="email">
               </div>
             </div>
             <div class="form-group m-form__group row">
-              <label for="example-text-input" class="col-2 col-form-label">Company Name</label>
+              <label for="example-text-input" class="col-2 col-form-label">School</label>
               <div class="col-7">
                 <input class="form-control m-input" type="text" value="Keenthemes">
-                <span class="m-form__help">If you want your invoices addressed to a company. Leave blank to use your full name.</span>
-              </div>
-            </div>
-            <div class="form-group m-form__group row">
-              <label for="example-text-input" class="col-2 col-form-label">Phone No.</label>
-              <div class="col-7">
-                <input class="form-control m-input" type="text" value="+456669067890">
+                <span class="m-form__help">Om Deze waarde te veranderen moet je een email sturen naar: EMAIL</span>
               </div>
             </div>
             <div class="m-form__seperator m-form__seperator--dashed m-form__seperator--space-2x"></div>
