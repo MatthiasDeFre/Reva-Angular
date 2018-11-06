@@ -5,6 +5,7 @@ export class Exhibitor {
 
     static fromJSON(json): Exhibitor{
         const rec= new Exhibitor(json.name,json.category);
+        console.log(rec);
         rec._id=json._id;
         return rec;
     }

@@ -15,15 +15,20 @@
           </div>
         </div>
       </div>
-      <!--aanpassen nog-->
       <div class="field">
         <select class='ui fluid dropdown' id="exhibitors" formControlName='exhibitors'>
           <option *ngFor='let exhibitor of exhibitors' [value]='exhibitor'>
-            {{exhibitor}}
+            {{exhibitor.name}}
           </option>
         </select>
       </div>
-      <!---->
+      <div class="field">
+        <select class='ui fluid dropdown' id="exhibitors" formControlName='exhibitors'>
+          <option *ngFor='let exhibitor of exhibitors' [value]='exhibitor'>
+            {{category}}
+          </option>
+        </select>
+      </div>
     </div>
   <button type='submit' class="ui positive right button">
     add question
