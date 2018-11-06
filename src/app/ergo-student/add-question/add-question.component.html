@@ -15,7 +15,7 @@
           </div>
         </div>
       </div>
-      <div class="field">
+       <div class="field">
         <select class='ui fluid dropdown' id="exhibitors" formControlName='exhibitors'>
           <option *ngFor='let exhibitor of exhibitors' [value]='exhibitor'>
             {{exhibitor.name}}
@@ -23,8 +23,8 @@
         </select>
       </div>
       <div class="field">
-        <select class='ui fluid dropdown' id="exhibitors" formControlName='exhibitors'>
-          <option *ngFor='let exhibitor of exhibitors' [value]='exhibitor'>
+        <select class='ui fluid dropdown' id="categories">
+          <option *ngFor='let category of categories' [value]='category'>
             {{category}}
           </option>
         </select>

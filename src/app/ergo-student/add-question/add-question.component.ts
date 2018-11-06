@@ -14,6 +14,7 @@ export class AddQuestionComponent implements OnInit {
   @Output() public newQuestion = new EventEmitter<Question>();
   private _exhibitors;
   private _questions;
+  private _categories;
   public question: FormGroup;
   public errorMsg: string;
 
@@ -34,6 +35,9 @@ export class AddQuestionComponent implements OnInit {
     return this._questions;
   }
 
+  get categories() {
+    return this._categories;
+  }
 
   ngOnInit() {
     this._ergoStudentDataService.exhibitors.subscribe(
@@ -41,15 +45,15 @@ export class AddQuestionComponent implements OnInit {
       (error: HttpErrorResponse) => {
         this.errorMsg = `Error ${
           error.status
-        } while trying to retrieve recipes: ${error.error}`;
+        } while trying to retrieve exhibitors: ${error.error}`;
       }
     );
-    this._ergoStudentDataService.questions.subscribe(
-      data => {this._questions = data},
+    this._ergoStudentDataService.categories.subscribe(
+      data => {this._categories = data},
       (error: HttpErrorResponse) => {
         this.errorMsg = `Error ${
           error.status
-        } while trying to retrieve recipes: ${error.error}`;
+        } while trying to retrieve questions: ${error.error}`;
       }
     );
 
@@ -80,7 +84,6 @@ export class AddQuestionComponent implements OnInit {
           }
         }
       });
-
   }
 
   createAnswers(): FormGroup {

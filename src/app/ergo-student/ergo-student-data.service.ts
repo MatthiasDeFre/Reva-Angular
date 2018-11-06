@@ -26,10 +26,10 @@ export class ErgoStudentDataService {
     .pipe(map((list: any[]): Exhibitor[] => list.map(Exhibitor.fromJSON)));
   } 
 
-  get categories(): Observable<String> {
+  get categories(): Observable<String[]> {
     return this.http
     .get(`${this._appUrl}/categories/`)
-    .pipe(map(category => category.toString()))
+    .pipe(map((list: any[]): String[] => list.map(category => category.toString())))
   }
 
   createQuestion(question: Question) : Observable<Question> {
