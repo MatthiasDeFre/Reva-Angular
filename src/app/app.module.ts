@@ -11,16 +11,14 @@ import { TeacherModule } from './teacher/teacher.module';
 import { ErgoStudentModule } from './ergo-student/ergo-student.module';
 import { basehttpInterceptorProviders } from './interceptors';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { AdminComponent } from './admin/admin.component';
-import { ExhibitorComponent } from './exhibitor/exhibitor.component';
-import { ExhibitorDetailComponent } from './admin/exhibitor-detail/exhibitor-detail.component';
+import { AdminComponent } from './admin/admin/admin.component';
+import { ExhibitorComponent } from './admin/exhibitor/exhibitor.component';
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
     AdminComponent,
-    ExhibitorComponent,
-    ExhibitorDetailComponent,
+    ExhibitorComponent
   ],
   imports: [
     BrowserModule,

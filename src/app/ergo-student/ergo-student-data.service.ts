@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Question } from './question/question.model';
 import { map } from 'rxjs/operators';
+import { Exhibitor } from '../admin/exhibitor/exhibitor.model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,11 +20,11 @@ export class ErgoStudentDataService {
       .get(`${this._appUrl}/questions/`)
       .pipe(map((list: any[]): Question[] => list.map(Question.fromJSON)));
   }
-/*   get exhibitors(): Observable<Exhibitor[]> {
+   get exhibitors(): Observable<Exhibitor[]> {
     return this.http
     .get(`${this._appUrl}/exhibitors/`)
     .pipe(map((list: any[]): Exhibitor[] => list.map(Exhibitor.fromJSON)));
-  } */
+  } 
 
   createQuestion(question: Question) : Observable<Question> {
     return this.http.post(`${this._appUrl}/question/`, question).pipe(map(Question.fromJSON));

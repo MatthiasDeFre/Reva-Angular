@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from 'selenium-webdriver/http';
 import { Observable } from 'rxjs';
 import { Exhibitor } from './exhibitor/exhibitor.model';
 import { map } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class AdminDataService {

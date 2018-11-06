@@ -12,6 +12,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 })
 export class AddQuestionComponent implements OnInit {
   @Output() public newQuestion = new EventEmitter<Question>();
+  private _exhibitors;
   public question: FormGroup;
   public errorMsg: string;
 
@@ -24,15 +25,24 @@ export class AddQuestionComponent implements OnInit {
     return <FormArray>this.question.get('answers');
   }
 
-  get exhibitors(): [string,string] {
-    return 
+  get exhibitors() {
+    return this._exhibitors;
   }
 
   ngOnInit() {
+    this._ergoStudentDataService.questions.subscribe(
+      data => {this._exhibitors = data},
+      (error: HttpErrorResponse) => {
+        this.errorMsg = `Error ${
+          error.status
+        } while trying to retrieve recipes: ${error.error}`;
+      }
+    );
+
     this.question = this.fb.group({
       questionname: ['', [Validators.required, Validators.minLength(2)]],
       answers: this.fb.array([this.createAnswers()]),
-      exhibitor: ['']
+      exhibitors: ['']
     });
 
     this.answers.valueChanges
