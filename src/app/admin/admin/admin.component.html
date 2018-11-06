@@ -1,0 +1,9 @@
+<p>
+  exhibitor for {{name}}
+</p>
+Exposanten:
+<ul>
+  <li *ngFor="let exhibitor of exhibitors">
+    <app-exhibitor [name]="exhibitor"></app-exhibitor>
+  </li>
+</ul>
