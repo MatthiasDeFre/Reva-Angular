@@ -13,6 +13,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 export class AddQuestionComponent implements OnInit {
   @Output() public newQuestion = new EventEmitter<Question>();
   private _exhibitors;
+  private _questions;
   public question: FormGroup;
   public errorMsg: string;
 
@@ -29,9 +30,22 @@ export class AddQuestionComponent implements OnInit {
     return this._exhibitors;
   }
 
+  get questions() {
+    return this._questions;
+  }
+
+
   ngOnInit() {
-    this._ergoStudentDataService.questions.subscribe(
+    this._ergoStudentDataService.exhibitors.subscribe(
       data => {this._exhibitors = data},
+      (error: HttpErrorResponse) => {
+        this.errorMsg = `Error ${
+          error.status
+        } while trying to retrieve recipes: ${error.error}`;
+      }
+    );
+    this._ergoStudentDataService.questions.subscribe(
+      data => {this._questions = data},
       (error: HttpErrorResponse) => {
         this.errorMsg = `Error ${
           error.status
