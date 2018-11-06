@@ -1,0 +1,31 @@
+<form class="ui segment form" [formGroup]='question' (ngSubmit)='onSubmit()'>
+  <h4 class="ui dividing header">Vraag toevoegen</h4>
+  <div class="field">
+    <label for="questionname_id">Naam van de vraag</label>
+    <input id="questionname" name="questionname_id" formControlName='questionname'>
+  </div>
+
+   <div class="field">
+    <label for="answer_name">Mogelijke antwoorden</label>
+    <div formArrayName='answers' *ngFor='let item of answers.controls; 
+          let i = index'>
+      <div [formGroupName]='i'>
+          <div class="field">
+            <input type="text" id="answer_name" formControlName='answername'>
+          </div>
+        </div>
+      </div>
+      <!--aanpassen nog-->
+      <div class="field">
+        <select class='ui fluid dropdown' id="exhibitors" formControlName='exhibitors'>
+          <option *ngFor='let exhibitor of exhibitors' [value]='exhibitor'>
+            {{exhibitor}}
+          </option>
+        </select>
+      </div>
+      <!---->
+    </div>
+  <button type='submit' class="ui positive right button">
+    add question
+  </button>
+</form>
