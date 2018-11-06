@@ -19,21 +19,21 @@ export class MenuConfig implements ConfigModel {
 						title: 'Vragenlijst',
 						root: true,
 						icon: 'flaticon-add',
-						toggle: 'click',
+						
 						page: "/teacher/list"
 					},
 					{
 						title: 'Beantwoorde vragen',
 						root: true,
 						icon: 'flaticon-line-graph',
-						toggle: 'click',
+					
 						page: "/teacher/groupsanswered"
 					},
 					{
 						title: 'Groepen beheren',
 						root: true,
 						icon: 'flaticon-paper-plane',
-						toggle: 'click',
+					
 						page:"/teacher/groups",	
 					}
 				]
