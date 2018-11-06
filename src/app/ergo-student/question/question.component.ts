@@ -1,6 +1,8 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 import { Question } from './question.model';
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import { faAngleDown, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { ErgoStudentDataService } from '../ergo-student-data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-question',
@@ -9,10 +11,12 @@ import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 })
 export class QuestionComponent implements OnInit {
   @Input() public question: Question;
+  @Output() public deleteQuestionEvent = new EventEmitter<Question>();
   @ViewChild('answers', { read: ElementRef }) answers: ElementRef;
   faAngleDown= faAngleDown;
+  faTimes = faTimes;
 
-  constructor() { }
+  constructor(private _ergoStudentDataService: ErgoStudentDataService, private router : Router) { }
 
   ngOnInit() {
   }
@@ -22,5 +26,9 @@ export class QuestionComponent implements OnInit {
      this.answers.nativeElement.classList.remove("shown")
     else
      this.answers.nativeElement.classList.add("shown")
+  }
+  deleteQuestion() {
+    console.log(this.deleteQuestionEvent)
+    this.deleteQuestionEvent.emit(this.question);
   }
 }

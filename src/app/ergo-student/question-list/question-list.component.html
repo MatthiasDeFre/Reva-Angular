@@ -15,7 +15,7 @@
   <div class="ui large form segment">
     <div class="ui basic segment">
       <div class="ui cards">
-        <app-question *ngFor='let localQuestion of questions ' [question]='localQuestion'></app-question>
+        <app-question *ngFor='let localQuestion of questions ' [question]='localQuestion' (deleteQuestionEvent)='removeQuestion($event)'></app-question>
       </div>
     </div>
   </div>
