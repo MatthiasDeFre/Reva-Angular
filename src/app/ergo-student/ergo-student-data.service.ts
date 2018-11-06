@@ -19,6 +19,12 @@ export class ErgoStudentDataService {
       .get(`${this._appUrl}/questions/`)
       .pipe(map((list: any[]): Question[] => list.map(Question.fromJSON)));
   }
+/*   get exhibitors(): Observable<Exhibitor[]> {
+    return this.http
+    .get(`${this._appUrl}/exhibitors/`)
+    .pipe(map((list: any[]): Exhibitor[] => list.map(Exhibitor.fromJSON)));
+  } */
+
   createQuestion(question: Question) : Observable<Question> {
     return this.http.post(`${this._appUrl}/question/`, question).pipe(map(Question.fromJSON));
   }
