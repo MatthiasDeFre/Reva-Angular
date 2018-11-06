@@ -13,12 +13,14 @@ import { basehttpInterceptorProviders } from './interceptors';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AdminComponent } from './admin/admin.component';
 import { ExhibitorComponent } from './exhibitor/exhibitor.component';
+import { ExhibitorDetailComponent } from './admin/exhibitor-detail/exhibitor-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
     AdminComponent,
     ExhibitorComponent,
+    ExhibitorDetailComponent,
   ],
   imports: [
     BrowserModule,
