@@ -93,8 +93,8 @@ export class AddQuestionComponent implements OnInit {
   }
 
   onSubmit() {
-    const question = new Question(this.question.value.questionname, this.question.value.answers.slice(0,this.question.value.answers.length - 1), new Date(), ["test"]["test"]);
-    console.log(this.question.value.answers.slice(0,this.question.value.answers.length - 1));
+    const question = new Question(this.question.value.questionname, this.question.value.answers.slice(0,this.question.value.answers.length - 1), new Date(), this.question.value.exhibitors);
+    console.log(new Question(this.question.value.questionname, this.question.value.answers.slice(0,this.question.value.answers.length - 1), new Date(), this.question.value.exhibitors));
 /*     for (const ans of this.question.value.answers) {
       if (ans.answername.length > 2) {
         const answer = this.question.value.answername;

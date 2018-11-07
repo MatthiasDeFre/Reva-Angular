@@ -16,6 +16,7 @@
         </div>
       </div>
        <div class="field">
+        <label for="answer_name">Exposanten</label>
         <select class='ui fluid dropdown' id="exhibitors" formControlName='exhibitors'>
           <option *ngFor='let exhibitor of exhibitors' [value]='exhibitor'>
             {{exhibitor.name}}
@@ -23,6 +24,7 @@
         </select>
       </div>
       <div class="field">
+        <label for="answer_name">Categorieën</label>
         <select class='ui fluid dropdown' id="categories">
           <option *ngFor='let category of categories' [value]='category'>
             {{category}}
@@ -31,6 +33,6 @@
       </div>
     </div>
   <button type='submit' class="ui positive right button">
-    add question
+    Voeg vraag toe
   </button>
 </form>

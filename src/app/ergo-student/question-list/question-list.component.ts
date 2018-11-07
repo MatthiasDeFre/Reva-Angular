@@ -40,11 +40,11 @@ export class QuestionListComponent implements OnInit {
   }
 
   removeQuestion(question : Question) {
-    console.log("verwijdern groep method aangeroepen in question-list-comp")
+   console.log("verwijderen question method aangeroepen in question-list-comp");
    this._ergoStudentDataService.deleteQuestion(question).subscribe(
      item => (this._questions = this._questions.filter(val => question.id !== val.id)),
      (error: HttpErrorResponse) => {
-       this.errorMsg = `Error ${error.status} while removing group for ${
+       this.errorMsg = `Error ${error.status} while removing question for ${
          question.body
        }: ${error.error}`;
      }
