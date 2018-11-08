@@ -1,0 +1,1 @@
+<app-exhibitor *ngFor=' let localExhibitor of exhibitors | exhibitorFilter:filterExhibitorName'[exhibitor]='localExhibitor' (deleteExhibitor)='removeExhibitor($event)'></app-exhibitor>

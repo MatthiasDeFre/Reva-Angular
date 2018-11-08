@@ -7,6 +7,7 @@ import { AdminDataService } from './admin-data.service';
 import { AdminComponent } from './admin/admin.component';
 import { ExhibitorComponent } from './exhibitor/exhibitor.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ExhibitorListComponent } from './exhibitor-list/exhibitor-list.component';
 
 
 const routes = [
@@ -15,7 +16,7 @@ const routes = [
 
 @NgModule({
   declarations: [
-    AdminComponent, ExhibitorComponent
+    AdminComponent, ExhibitorComponent, ExhibitorListComponent
   ],
   imports: [
     HttpClientModule,
