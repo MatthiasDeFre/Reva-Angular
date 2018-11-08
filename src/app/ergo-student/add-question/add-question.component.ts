@@ -37,19 +37,19 @@ export class AddQuestionComponent implements OnInit {
 
   ngOnInit() {
     this._ergoStudentDataService.exhibitors.subscribe(
-      data => {this._exhibitors = data},
+      data => { this._exhibitors = data },
       (error: HttpErrorResponse) => {
         this.errorMsg = `Error ${
           error.status
-        } while trying to retrieve recipes: ${error.error}`;
+          } while trying to retrieve recipes: ${error.error}`;
       }
     );
     this._ergoStudentDataService.questions.subscribe(
-      data => {this._questions = data},
+      data => { this._questions = data },
       (error: HttpErrorResponse) => {
         this.errorMsg = `Error ${
           error.status
-        } while trying to retrieve recipes: ${error.error}`;
+          } while trying to retrieve recipes: ${error.error}`;
       }
     );
 
@@ -90,14 +90,14 @@ export class AddQuestionComponent implements OnInit {
   }
 
   onSubmit() {
-    const question = new Question(this.question.value.questionname, this.question.value.answers.slice(0,this.question.value.answers.length - 1), new Date(), ["test"]["test"]);
-    console.log(this.question.value.answers.slice(0,this.question.value.answers.length - 1));
-/*     for (const ans of this.question.value.answers) {
-      if (ans.answername.length > 2) {
-        const answer = this.question.value.answername;
-        question.addAnswer(answer);
-      }
-    } */
+    const question = new Question(this.question.value.questionname, this.question.value.answers.slice(0, this.question.value.answers.length - 1), new Date(), ["test"]["test"]);
+    console.log(this.question.value.answers.slice(0, this.question.value.answers.length - 1));
+    /*     for (const ans of this.question.value.answers) {
+          if (ans.answername.length > 2) {
+            const answer = this.question.value.answername;
+            question.addAnswer(answer);
+          }
+        } */
 
     this._ergoStudentDataService.createQuestion(question).subscribe(
       () => {

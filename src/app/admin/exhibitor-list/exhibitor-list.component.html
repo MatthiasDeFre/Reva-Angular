@@ -1,1 +1,21 @@
-<app-exhibitor *ngFor=' let localExhibitor of exhibitors | exhibitorFilter:filterExhibitorName'[exhibitor]='localExhibitor' (deleteExhibitor)='removeExhibitor($event)'></app-exhibitor>
+<div class="segment">
+  <div *ngIf='errorMsg' class="ui error message">{{errorMsg}}</div>
+  <div class="ui basic segment">
+    <div class="ui two fields">
+      <div class="ui input">
+        <input (keyup)='filterExhibitor$.next($event.target.value)' type='text' id='filter' name='filter' placeholder='Filter exhibitors'>
+      </div>
+    </div>
+  </div>
+  <div class="question">
+      <span class="qbody">Exposanten:</span>
+      <br class="clearer"/>
+    </div>
+  <div class="ui large form segment">
+    <div class="ui basic segment">
+      <div class="ui cards">
+        <app-exhibitor *ngFor='let localExhibitor of exhibitors ' [exhibitor]='localExhibitor'> </app-exhibitor>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<form class="ui segment form" [formGroup]='exhibitor' (ngSubmit)='onSubmit()'>
+  <h4 class="ui dividing header">Exhibitor toevoegen</h4>
+  <div class="field">
+    <label for="exhibitorname_id">Naam van de standhouder</label>
+    <input id="exhibitorname" name="exhibitorname_id" formControlName='exhibitorname'>
+  </div>
+  <button type='submit' class="ui positive right button">
+    add exhibitor
+  </button>
+</form>

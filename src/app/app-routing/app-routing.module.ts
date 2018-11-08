@@ -3,6 +3,7 @@ import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
 import { SelectivePreloadStrategy } from './SelectivePreloadStrategy';
+import { ExhibitorListComponent } from '../admin/exhibitor-list/exhibitor-list.component';
 //import { AuthGuardService } from '../user/auth-guard.service';
 
 const appRoutes: Routes = [
@@ -13,7 +14,9 @@ const appRoutes: Routes = [
     data: { preload: true }
   },*/
   { path: '', redirectTo: 'list', pathMatch: 'full' },
-  { path: '**', component: PageNotFoundComponent }
+  {path:'admin',component:ExhibitorListComponent},
+  { path: '**', component: PageNotFoundComponent },
+  
 ];
 
 @NgModule({
