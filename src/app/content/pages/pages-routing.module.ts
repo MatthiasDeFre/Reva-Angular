@@ -7,6 +7,7 @@ import { ProfileComponent } from './header/profile/profile.component';
 import { ErrorPageComponent } from './snippets/error-page/error-page.component';
 import { InnerComponent } from "./components/inner/inner.component";
 import { QuestionListComponent } from './teacher/question-list/question-list.component';
+import { AuthGuardService } from '../../core/auth/auth-guard.service';
 
 const routes: Routes = [
 	{
@@ -35,7 +36,11 @@ const routes: Routes = [
 			},
 			{
 				path: "teacher",
-				loadChildren: './teacher/teacher.module#TeacherModule'
+				loadChildren: './teacher/teacher.module#TeacherModule',
+				data: {
+					roles: ["TEACHER"]
+				},
+				canActivate: [AuthGuardService]
 			}
 		]
 	},

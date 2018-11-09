@@ -2,7 +2,7 @@ export class User {
     private _name : string;
     private _id : string;
     private _avatar : string;
-    private _admin : boolean;
+    private _role : string;
     private _email : string;
     constructor(id : string, name : string, email : string) {
         this._id =id;
@@ -18,6 +18,9 @@ export class User {
     }
     get email() : string {
         return this._email;
+    }
+    get role() : string {
+        return "TEACHER";
     }
     static fromJSON(json: any): User {
         const user = new User(

@@ -7,6 +7,8 @@ import { MenuHorizontalDirective } from '../../../../core/directives/menu-horizo
 import { MenuHorizontalService } from '../../../../core/services/layout/menu-horizontal.service';
 import { MenuConfigService } from '../../../../core/services/menu-config.service';
 import { ClassInitService } from '../../../../core/services/class-init.service';
+import { AuthenticationService } from '../../../../core/auth/authentication.service';
+import { isUndefined } from 'util';
 
 @Component({
 	selector: 'm-menu-horizontal',
@@ -32,6 +34,7 @@ export class MenuHorizontalComponent implements OnInit, AfterViewInit {
 		public menuHorService: MenuHorizontalService,
 		private menuConfigService: MenuConfigService,
 		private router: Router,
+		private _authService : AuthenticationService
 	) {
 		this.classes = this.menuHorService.menuClasses;
 	}
@@ -212,5 +215,12 @@ export class MenuHorizontalComponent implements OnInit, AfterViewInit {
 		}
 
 		return false;
+	}
+	isAllowed(roles) {
+		let user = this._authService.user$.getValue();
+	
+		if(!roles || roles.includes(user.role))
+			return true;
+		return false
 	}
 }

@@ -13,28 +13,28 @@ export class MenuConfig implements ConfigModel {
 					{
 						title: 'Dashboard',
 						root: true,
-						page: '/',
+						page: '/'
 					},
 					{
 						title: 'Vragenlijst',
 						root: true,
 						icon: 'flaticon-add',
-						
-						page: "/teacher/list"
+						page: "/teacher/list",
+						roles: ["TEACHER"]
 					},
 					{
 						title: 'Beantwoorde vragen',
 						root: true,
 						icon: 'flaticon-line-graph',
-					
-						page: "/teacher/groupsanswered"
+						page: "/teacher/groupsanswered",
+						roles: ["TEACHER"]
 					},
 					{
 						title: 'Groepen beheren',
 						root: true,
 						icon: 'flaticon-paper-plane',
-					
 						page:"/teacher/groups",	
+						roles: ["TEACHER"]
 					}
 				]
 			},
