@@ -22,7 +22,6 @@ export class GroupDetailComponent implements OnInit {
   }
       
   get group() : Group {
-    console.log(this._group)
       return this._group;
   }
   get imageUrl() {
