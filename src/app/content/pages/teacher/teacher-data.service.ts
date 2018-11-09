@@ -35,6 +35,11 @@ export class TeacherDataService {
     .get(`${this._appUrl}/codes/`)
     .pipe(map((list: any[]): Group[] => list.map(Group.fromJSON)));
   }
+   getGroup(id : string): Observable<Group> {
+    return this.http
+    .get(`${this._appUrl}/group/${id}`)
+    .pipe(map((list: any): Group =>Group.fromJSON(list))); 
+  }
   createGroups(amount) : Observable<Group[]> {
     return this.http.post(`${this._appUrl}/makegroups/`, {amount:amount}).pipe(map((list: any[]): Group[] => list.map(Group.fromJSON)));
   }

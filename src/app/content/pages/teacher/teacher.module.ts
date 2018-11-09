@@ -13,13 +13,10 @@ import { GroupListComponent } from './group-list/group-list.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TeacherRoutingModule } from "./teacher-routing.module";
 import { basehttpInterceptorProviders } from "../../../interceptors";
+import { GroupDetailComponent } from './group-detail/group-detail.component';
+import { GroupResolver } from "./group-resolver";
 //import { httpInterceptorProviders, basehttpInterceptorProviders } from "../http-interceptors";
 
-const routes: Routes= [
-  { path: 'list', component: QuestionListComponent, data: {groupA : false} },
-  { path: "groups", component: GroupListComponent},
-  { path: 'groupanswered', component: QuestionListComponent, data: {groupA : true} },
-];
 @NgModule({
   imports: [
     HttpClientModule,
@@ -27,8 +24,7 @@ const routes: Routes= [
     FontAwesomeModule,
     ReactiveFormsModule,
     FormsModule,
-    TeacherRoutingModule,
-    RouterModule.forChild(routes)
+    TeacherRoutingModule
   ],
   declarations: [
     QuestionComponent,
@@ -36,12 +32,14 @@ const routes: Routes= [
     QuestionListComponent,
     GroupComponent,
     GroupListComponent,
+    GroupDetailComponent,
   ],
   providers: [
     //basehttpInterceptorProviders,
     //httpInterceptorProviders,
     TeacherDataService,
-    basehttpInterceptorProviders
+    basehttpInterceptorProviders,
+    GroupResolver
   ] 
 })
 export class TeacherModule { }

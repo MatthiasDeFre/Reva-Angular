@@ -23,4 +23,8 @@ export class GroupComponent implements OnInit {
     console.log(this.deleteGroupEvent)
     this.deleteGroupEvent.emit(this.group);
   }
+  groupDetail() {
+    console.log();
+    this.router.navigate([`/teacher/group/${this.group.id}`]);
+  }
 }
