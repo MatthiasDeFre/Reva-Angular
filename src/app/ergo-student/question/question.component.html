@@ -1,0 +1,11 @@
+<div class="question" (click)="expandAnswers()">
+  <span class="qbody"> {{ question.body }}</span>
+  <div (click)="deleteQuestion()" class="qdelete"><fa-icon [icon]="faTimes" style="color: #aa0b0b;"></fa-icon></div>
+  <span class="qcat">{{question.exhibitor[0]}}</span>
+  <fa-icon class="qicon" [icon]="faAngleDown"  size="lg"></fa-icon>
+  <div class="qanswers" #answers>
+    <p>Mogelijke antwoorden:</p>
+  <ul *ngFor='let item of question.answers'><li>{{item}}</li></ul>
+</div>
+  <br class="clearer"/>
+</div>
