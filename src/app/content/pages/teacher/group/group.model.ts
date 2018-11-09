@@ -1,8 +1,12 @@
+import { Question } from "../question/question.model";
+import { Answer } from "../group-detail/Answer.model";
+
 export class Group {
     private _id : String;
     private _code : String;
     private _name : String;
     private _imageString : String;
+    private _questions : String;
     get id() {
         return this._id;
     }
@@ -15,12 +19,18 @@ export class Group {
     get imageString() {
         return this._imageString;
     }
+    get questions() {
+        return this._questions;
+    }
     static fromJSON(json: any): Group {
         const group = new Group();
         group._id = json._id;
         group._code = json.code.toUpperCase();
         group._name = json.name;
         group._imageString = json.imageString;
+        console.log(json.answers)
+        if(json.answers)
+            group._questions = json.answers.map(Answer.fromJSON);
         return group;
     }
 }

@@ -9,7 +9,7 @@
   <div class="qanswers" #answers>
     <p>Mogelijke antwoorden:</p>
   <ul *ngFor='let item of question.answers'><li>{{item}}</li></ul>
-  <div>
+  <div *ngIf="question.groupAnswer">
     <p>Antwoorden van uw groepen:</p>
     <ul>
     <li>{{question.groupAnswer}}</li>
