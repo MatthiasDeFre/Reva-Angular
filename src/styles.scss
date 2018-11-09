@@ -1,0 +1,193 @@
+/* You can add global styles to this file, and also import other style files */
+//@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.mat-table__wrapper {
+	width: 100%;
+	overflow-x: auto;
+
+
+	mat-cell, mat-header-cell {
+		min-height: 100%;
+	}
+
+
+}
+
+.mat-table__wrapper .mat-table {
+	min-width: 1000px;
+	width: 100%;
+}
+
+.mat-table__wrapper--dashboard .mat-table {
+	min-width: 600px !important;
+}
+
+
+.mat-table__wrapper .mat-table .email-cell {
+	word-wrap: normal;
+	width: 180px;
+	flex: auto;
+}
+
+
+.m-mat-dialog-container__wrapper .mat-dialog-container {
+	padding: 0;
+	overflow-x: hidden;
+
+	.m-portlet {
+		margin-bottom: 0;
+	}
+
+	.alert {
+		border-radius: 0 !important;
+		width: 1032px;
+	}
+}
+
+.mat-table__wrapper--sub .mat-table {
+	min-width: 400px;
+
+	.mat-cell:last-child {
+		flex: 0 0 100px;
+	}
+
+	.mat-header-cell:last-child {
+		flex: 0 0 100px;
+	}
+}
+
+.ml-auto {
+	margin-left: auto;
+}
+
+.example-full-width {
+	width: 100%;
+}
+
+mat-radio-button {
+	padding-right: 16px;
+}
+
+.m-form--alert {
+	margin-top: 30px;
+}
+
+.mat-column-checkbox {
+	flex: 0 0 68px;
+}
+
+.mat-column-id {
+	flex: 0 0 68px;
+}
+
+.mat-column-main {
+	flex: 0 0 568px;
+}
+
+.mat-column-actions {
+	flex: 0 0 160px;
+}
+
+.mat-table__bottom {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+
+.mat-column-vinCode {
+	flex: 0 0 170px;
+}
+
+.m-portlet-mx-0 {
+	margin: -1.1rem -2.2rem 0;
+	overflow-x: hidden;
+}
+.mat-table__wrapper .mat-table .mat-row-editing.mat-row-inactive {
+	height: 0;
+	min-height: 0;
+	padding: 0 !important;
+	border-bottom:0 !important;
+}
+
+/* You can add global styles to this file, and also import other style files */
+.question {
+	cursor: pointer;
+	 margin: 10px;
+	 margin-bottom: 0px;
+	 margin-top:0px;
+	font-size: 25px;
+	 padding:20px;
+	 border: none;
+	 
+	 box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+	 transition: box-shadow 50ms cubic-bezier(0.4, 0.0, 0.2, 1);
+ }
+ .question:hover {
+	 box-shadow: 0 3px 8px 0 rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.08);
+ }
+ 
+ .qbody {
+	 font-weight: bold;
+	 width: 65%;
+	 float:left;
+	 text-overflow: ellipsis;
+	 overflow: hidden;
+	 white-space: nowrap;
+	 
+ }
+ .qcat {
+	 font-weight: bold;
+	 width:25%;
+	 float:left;
+ }
+ .qicon {
+	 width:10%;
+	 float:left;
+	 margin-top: -4px;
+ }
+ .qanswers {
+	 max-height: 0;
+	 transition: max-height 0.50s ease-out;
+	 overflow: hidden;
+	 float:left;
+ }
+ .qanswers.shown {
+	 max-height: 500px;
+	 transition: max-height 0.50s ease-in;
+ }
+ .clearer {
+	 clear:both;
+ }
+ 
+ .groupwrapper {
+	 display: inline-block;
+ }
+ 
+ .group {
+	 float:left;
+	 width: 25%;
+	 font-size: 25px;
+	  padding:20px;
+	 
+	  border: none;
+	  border-radius: 2px;
+	  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+	  transition: box-shadow 50ms cubic-bezier(0.4, 0.0, 0.2, 1);
+ }
+ .group:hover {
+	 box-shadow: 0 3px 8px 0 rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.08);
+ }
+ .gcode {
+	 float:left;
+ }
+ .gdelete {
+	 float:right;
+	 cursor: pointer;
+	 margin: 25px 0;
+ }
+ .gchosen {
+	 clear:both;
+ }
+ .test.path {
+	 background: yellow;
+ }

@@ -1,76 +1,8 @@
-<div class="wrapper">
-    <nav id="sidebar">
-        <ul class="list-unstyled components">
-            <li class="logo">
-                <a href="homeSubmenu" class="navigatieItem">
-                    <i class="">R</i>
-                    <p class="icontext">EVA</p>
-                </a>
-            </li>
-            <li class="active">
-                <a href="homeSubmenu" class="navigatieItem">
-                    <i class="fas fa-home"></i>
-                    <p class="icontext">Home</p>
-                </a>
-            </li>
-            <li>
-                <a href="#" class="navigatieItem">
-                    <i class="fas fa-briefcase"></i>
-                    <p class="icontext">Vragenlijst</p>
-                </a>
-            </li>
-            <li>
-                <a href="#pageSubmenu" class="navigatieItem">
-                    <i class="fas fa-copy"></i>
-                    <p class="icontext">Pages</p>
-                </a>
-
-            </li>
-            <li>
-                <a href="#" class="navigatieItem">
-                    <i class="fas fa-image"></i>
-                    <p class="icontext">Portfolio</p>
-                </a>
-            </li>
-            <li>
-                <a href="#" class="navigatieItem">
-                    <i class="fas fa-question"></i>
-                    <p class="icontext">FAQ</p>
-                </a>
-            </li>
-            <li>
-                <a href="#" class="navigatieItem">
-                    <i class="fas fa-paper-plane"></i>
-                    <p class="icontext">Contact</p>
-                </a>
-            </li>
-        </ul>
-    </nav>
-    <div id="content">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-
-                <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <i class="fas fa-align-justify"></i>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="nav navbar-nav ml-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">afbeelding gebruiker</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Gebruikersnaam</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <div>
-            <router-outlet></router-outlet> 
-            
-        </div>
-    </div>
+<!-- splash screen -->
+<div #splashScreen class="m-splash-screen">
+	<img [attr.src]="splashScreenImage" style="width: 90px; margin-bottom: 30px;" alt="Logo">
+	<!--here we will have circle progress bar-->
+	<mat-spinner diameter="40"></mat-spinner>
 </div>
+
+<router-outlet></router-outlet>
