@@ -1,6 +1,7 @@
 # Frontend Reva Fair
 
 Webfrontend for the Reva fair application, teachers can use this platform to create questions and make groups for the Android application.
+Admins also have the ability to add new stands to the fair and add them to the map.
 
 ## Screenshots
 
